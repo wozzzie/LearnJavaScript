@@ -309,9 +309,54 @@ btns.forEach(btn => {
 btn.addEventListener('click', deleteElement);
 });
 
+// * Мобильные события
+touchstart
+touchmove
+touchend
+touchenter //  наскальзивание на элемент с событием
+touchleave // прохождение мимо элемента с событием 
+touchcancel // точка соприкосновения больше не рег. на поверхности (за пределы браузера)
 
+touches
+targetTouches
+changedTouches
+ 
+window.addEventListener('DOMContentLoaded')
 
+// ! ClassList
+classList.length; // количество классов у элемента
+classList.item(0); // позволяет получить класс, кот располагаетс я под опеределенным индексом
+classList.add(''); // добавляет определенный класс
+classList.remove(''); // удаляет класс
+classList.toggle(''); // если класс есть на элементе - то он будет удален, если не было класса - добавлен
+classList.contains(''); //
 
+const btns = document.querySelectorAll('button');
+console.log(btns[0].classList.length);
+console.log(btns[0].classList.item(1));
+console.log(btns[0].classList.add('red'));
+console.log(btns[0].classList.remove('blue'));
+console.log(btns[0].classList.toggle('blue'));
+
+if (btns[1].classList.contains('red')) {
+  console.log('red');
+};
+
+btns[0].addEventListener('click', () => {
+if (!btns[1].classList.contains('red')) {
+  btns[1].classList.add('red');
+} else {
+  btns[1].classList.remove('red');
+}
+});
+
+// or
+
+btns[0].addEventListener('click', () => {
+ btns[1].classList.toggle('red');
+  });
+
+className // устарело, содержит классы в качестве одной строки 
  
 // TASKS
 const personalMoviesDB = {
