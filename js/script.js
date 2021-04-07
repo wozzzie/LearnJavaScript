@@ -357,6 +357,63 @@ btns[0].addEventListener('click', () => {
   });
 
 className // устарело, содержит классы в качестве одной строки 
+
+// ! setInterval, setTimeout
+// * setInterval - позволяет вызвать функцию один раз, через интервал времени
+// * setTimeout - позволяет вызывать функцию регулярно, повторяя вызов через интервал времени 
+let timer = setTimeout(func, [delay], [arg1], [arg2], ...n);
+// func - функция
+// delay - задержка в миллисекундах
+// arg1, arg2 - аргументы, передаваемые в функцию
+
+//  1)
+function sayHi() {
+  alert('Hello');
+}
+setTimeout(sayHi, 1000); // функция без аргументов
+
+// 2)
+function sayHi(phrase, who) {
+  alert( phrase + ', ' + who );
+}
+setTimeout(sayHi, 1000, 'Привет', 'Джон'); // Привет, Джон
+// функция с аргументами
+
+// !! Функцию можно передавать, но не запускать 
+// ! setTimeout(sayHi(), 1000) - так нельзя
+
+// * Отмена через clearTimeout
+let timerId = setTimeout();
+clearTimeout(timerId);
+
+const timerId = setTimeout(logger, 2000);
+function logger () {
+  console.log('text');
+}
+
+
+ // ! Дата
+const now =new Date();
+console.log(now);
+
+// Получение компонентов даты
+getFullYear();
+const year = new Date();
+console.log(year.getFullYear());
+
+getMonth();
+getDate();
+getMinutes();
+getDay(); // номер дня недели
+getHours();
+getUTCHours(); 
+
+// Устновление даты
+setHours();
+setMonth();
+setMinutes();
+const date = new Date();
+console.log(date.setHours(18));
  
 // TASKS
 const personalMoviesDB = {
