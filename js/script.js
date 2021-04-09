@@ -391,6 +391,7 @@ function logger () {
   console.log('text');
 }
 
+// РекурсивныйsetTimeout гарантирует фиксированную задержку
 
  // ! Дата
 const now =new Date();
@@ -408,13 +409,91 @@ getDay(); // номер дня недели
 getHours();
 getUTCHours(); 
 
-// Устновление даты
+// Установление даты
 setHours();
 setMonth();
 setMinutes();
 const date = new Date();
 console.log(date.setHours(18));
  
+// !!! Конекст вызова this 
+
+// * 1) Обычная функция: this = window, но если use strict = undefined
+'use strict';
+function showThis() {
+  console.log(this);
+}
+
+showThis();
+
+// * 2) Контекст у методов объекта - сам объект 
+
+const obj = {
+  a: 20,
+  b: 15,
+  sum: function() {
+    console.log(this);
+  }
+}; 
+obj.sum();
+ // { a: 20, b: 15, sum: [Function: sum] }
+
+// 3) Вызов функции не относится к методу( простая функция, которая запускается
+// внутри метода объекта).Контекст вызова был потерян.
+const obj = {
+  a: 20,
+  b: 15,
+  sum: function() {
+    function shout() {
+       console.log(this);
+    }
+    shout();
+  }
+}; 
+obj.sum();
+ 
+// 4)  this в конструкторах и классах - это новый экземпляр объекта
+// 5)  Ручная привязка this: call, apply, bind 
+
+
+const btn = document.querySelector('button');
+btn.addEventListener('click', function() {
+  console.log(this);
+}); 
+// Контекстом вызова будет сам элемент, на котором произошло событие == event.target
+// ! только при классическом вызове функции
+
+// 6) Стрелочные функции не имеют своего контекста вызова, они берут его у своего родителя
+
+const obj = {
+  num: 5,
+  sayNumber: function() {
+    const say = () => {
+      console.log(this);    
+    };
+    say();
+  } 
+};
+obj.sayNumber();
+ 
+//  методы у объектов, с контекстом внутри, ссылаются на сам объект 
+// ! стрелочные функции будут ссылаться на родителя. если родитель 
+//  ! является методом, то будут ссылаться на объект
+
+const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+    this.style.backgroundColor = 'red';
+});
+// работать не будет, контект вызова теряется - будет undefined
+// будет работать через event.target
+
+const btn = document.querySelector('button');
+    btn.addEventListener('click', (e) => {
+    e.target.style.backgroundColor = 'red';
+});
+
+
+
 // TASKS
 const personalMoviesDB = {
   count: 0,
