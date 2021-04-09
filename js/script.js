@@ -492,6 +492,54 @@ const btn = document.querySelector('button');
     e.target.style.backgroundColor = 'red';
 });
 
+// JSON 
+const persone ={
+  name: 'Alex',
+  tel: '+744444444'
+};
+
+console.log(JSON.stringify(persone));
+// {"name":"Alex","tel":"+744444444"} формат данных для отправки на сервер
+
+const persone ={
+  name: 'Alex',
+  tel: '+744444444'
+};
+
+console.log(JSON.parse(JSON.stringify(persone)));
+
+// { name: 'Alex', tel: '+744444444' } возвращает объект для работы на front-end
+
+
+// ! Глубокое клонирование
+const persone = {
+  name: 'Alex',
+  tel: '+744444444',
+  parents: {
+    mom: 'Olga',
+    dad: 'Mike'
+  }
+};
+
+const clone = JSON.parse(JSON.stringify(persone));
+console.log(persone);
+
+// {
+//   name: 'Alex',
+//   tel: '+744444444',
+//   parents: { mom: 'Olga', dad: 'Mike' }
+// } глубокий клон объекта
+
+
+clone.parents.mom = 'Ann';
+console.log(clone);
+
+// {
+//   name: 'Alex',
+//   tel: '+744444444',
+//   parents: { mom: 'Ann', dad: 'Mike' }
+// } измененные данные 
+
 
 
 // TASKS
