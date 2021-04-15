@@ -176,6 +176,63 @@ const copyArray = [...oldArray, ...newArray]
  
 console.log(copyArray)
 
+// ! Методы массивов 
+// Метод - filter 
+
+const names = ['Ivan', 'Ann', 'Ksenia', 'Vladimir'];
+
+const shortNames = names.filter(function(name) {
+return name.length < 5;
+});
+
+console.log(shortNames);
+
+// Метод - Map
+
+const answers = ['IvAn', 'AnNa', 'Hello'];
+
+const result = answers.map(item => item.toLowerCase());
+console.log(result);
+// ИЛИ 
+const result = answers.map(item => {
+  return item.toLowerCase();
+});
+console.log(result);
+// ИЛИ 
+let answers = ['IvAn', 'AnNa', 'Hello'];
+answers = answers.map(item => item.toLowerCase());
+console.log(answers);
+// *  метод map возвращает новый массив 
+
+
+//  Метод every/some - возвращают булиновое значение
+
+const some = [4, 'qwq', 'dffsdf'];
+console.log(some.some(item => typeof(item) === 'number'));
+// если хотя бы 1 элемент попадает под условие - true
+
+console.log(some.every(item => typeof(item) === 'number'));
+// если все элементы попадают под условие - true
+
+// Метод reduce - собирает массив в единое целое
+const arr = [4, 5, 1, 3, 2, 6];
+                     // 0    4
+                     // 4    5
+                     // 9    1
+                     // 10   3
+                     // 13   2
+                     // 15   6
+                     //   21
+const res = arr.reduce((sum, current) => sum + current);
+console.log(res);
+
+const arr = ['apple', 'pear', 'plum'];
+const res = arr.reduce((sum, current) => `${sum}, ${current}`);
+console.log(res);
+
+
+
+
 // ~ Псевдомассивы
 // ! При работе с элементами со страницы мы получаем псевдомассивы
 // ! У псевдомассивов нет методов
